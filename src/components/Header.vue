@@ -14,7 +14,7 @@ export default {
       nowTime: ""
     };
   },
-  created() {
+  mounted() {
     this.currentTime();
   },
   methods: {

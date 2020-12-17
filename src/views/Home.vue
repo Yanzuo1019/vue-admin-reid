@@ -26,9 +26,6 @@ export default {
     Aside,
     Header
   },
-  created() {
-    this.$router.push("/Home/HomePage")
-  }
 };
 </script>
 

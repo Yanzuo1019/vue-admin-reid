@@ -54,9 +54,7 @@ router.beforeEach((to, from, next) => {
       next("/");
     } else {
       service
-        .post("/AuthCheck", {
-          token: token
-        })
+        .get("/AuthCheck")
         .then(response => {
           if (response.data.data.valid) {
             next();
@@ -75,12 +73,10 @@ router.beforeEach((to, from, next) => {
   } else {
     if (to.path === "/" && token) {
       service
-        .post("/AuthCheck", {
-          token: token
-        })
+        .get("/AuthCheck")
         .then(response => {
           if (response.data.data.valid) {
-            next("/Home");
+            next("/Home/HomePage");
           } else {
             localStorage.removeItem("token");
             localStorage.removeItem("username");

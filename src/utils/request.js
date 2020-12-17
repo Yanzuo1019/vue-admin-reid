@@ -1,8 +1,21 @@
 import axios from "axios"
 
 const service = axios.create({
-    baseURL: "https://mockapi.eolinker.com/IjpR5G3f9a6a1dedc9c7b928ee9fa8bd2a93cf4d4cf9761",
+    baseURL: "http://127.0.0.1:8080",
     timeout: 5000
 })
+
+service.interceptors.request.use(
+    config => {
+        const token = localStorage.getItem("token")
+        if (token) {
+            config.headers.authorization = token
+        }
+        return config
+    },
+    error => {
+        return Promise.reject(error)
+    }
+)
 
 export default service
