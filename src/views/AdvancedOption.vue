@@ -55,7 +55,8 @@ export default {
         method: "post",
         url: "/Upload",
         headers: { "Content-Type": "multipart/form-data" },
-        data: param
+        data: param,
+        timeout: 60000
       });
     }
   }
