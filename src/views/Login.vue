@@ -53,7 +53,7 @@ export default {
           localStorage.setItem("username", this.loginModel.username);
           localStorage.setItem("token", response.data.data.token);
           this.$message.success("登录成功");
-          this.$router.push("/Home/HomePage");
+          this.$router.push("/Home/DeviceStatus");
         })
         .catch(error => {
           this.$message.error("登录失败");

@@ -31,12 +31,12 @@ const routes = [
         path: "AdvancedOption",
         component: AdvancedOption,
         meta: { requireAuth: true }
-      },
-      {
-        path: "HomePage",
-        component: HomePage,
-        meta: { requireAuth: true }
       }
+      // {
+      //   path: "HomePage",
+      //   component: HomePage,
+      //   meta: { requireAuth: true }
+      // }
     ]
   }
 ];
@@ -48,6 +48,15 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  service
+    .get("/CheckLicense")
+    .then(response => {
+      localStorage.setItem("license", response.data.result);
+    })
+    .catch(error => {
+      localStorage.setItem("license", "-1");
+    });
+
   const token = localStorage.getItem("token");
   if (to.meta.requireAuth) {
     if (!token) {
@@ -76,7 +85,7 @@ router.beforeEach((to, from, next) => {
         .get("/AuthCheck")
         .then(response => {
           if (response.data.data.valid) {
-            next("/Home/HomePage");
+            next("/Home/DeviceStatus");
           } else {
             localStorage.removeItem("token");
             localStorage.removeItem("username");

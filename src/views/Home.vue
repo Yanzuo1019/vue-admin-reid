@@ -25,7 +25,7 @@ export default {
     Main,
     Aside,
     Header
-  },
+  }
 };
 </script>
 
@@ -36,11 +36,11 @@ export default {
 }
 .el-header {
   line-height: 60px;
-  background-color: #24292E;
-  color: #FFFFFF;
+  background-color: #24292e;
+  color: #ffffff;
 }
 .el-aside {
   height: 100%;
-  background-color: #24292E;
+  background-color: #24292e;
 }
 </style>
